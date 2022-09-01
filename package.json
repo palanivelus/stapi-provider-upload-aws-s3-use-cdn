@@ -1,0 +1,32 @@
+{
+  "name": "strapi-provider-upload-aws-s3-serve-with-cdn",
+  "version": "1.0.0",
+  "description": "Expands on the standard @strapi AWS S3 provider package to enable uploading to private S3 buckets by removing the public ACL requirement and allowing settings to be configured for S3 subdirectories. It also allows a CDN base URL to be set since the public S3 image URLs will be disabled.",
+  "keywords": [
+    "upload",
+    "aws",
+    "s3",
+    "strapi"
+  ],
+  "main": "./lib",
+  "directories": {
+    "lib": "./lib"
+  },
+  "scripts": {
+    "test": "echo \"no tests yet\""
+  },
+  "dependencies": {
+    "aws-sdk": "2.1188.0",
+    "lodash": "4.17.21"
+  },
+  "engines": {
+    "node": ">=14.19.1 <=16.x.x",
+    "npm": ">=6.0.0"
+  },
+  "author": "Jared Shepherd",
+  "license": "SEE LICENSE IN LICENSE",
+  "repository": {
+    "type": "git",
+    "url": "git://https://github.com/supplystream/stapi-provider-upload-aws-s3-use-cdn"
+  }
+}
