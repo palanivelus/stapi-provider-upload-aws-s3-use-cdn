@@ -15,10 +15,10 @@
 
 ```bash
 # using yarn
-yarn add @strapi/provider-upload-aws-s3
+yarn add strapi-provider-upload-aws-s3-use-cdnv
 
 # using npm
-npm install @strapi/provider-upload-aws-s3 --save
+npm install strapi-provider-upload-aws-s3-use-cdn
 ```
 
 ## Configuration
@@ -29,6 +29,8 @@ npm install @strapi/provider-upload-aws-s3 --save
 
 See the [documentation about using a provider](https://docs.strapi.io/developer-docs/latest/plugins/upload.html#using-a-provider) for information on installing and using a provider. To understand how environment variables are used in Strapi, please refer to the [documentation about environment variables](https://docs.strapi.io/developer-docs/latest/setup-deployment-guides/configurations/optional/environment.html#environment-variables).
 
+Two new environment variables have been added. AWS_CDN_DOMAIN is the base URL for the CDN you serve your images from and should include the protocol AND the trailing slash, such as `https://www.your-cdn-url.com/`. AWS_BUCKET_SUBDIRECTORY allows you to specify the directory within your S3 bucket that you used for storing the uploads. These two values will be combined to form the entire URL besides the file name and should also include the trailing '/'. If I set the AWS_BUCKET_SUBDIRECTORY to `uploads/` then the URL structure for images would be `https://www.your-cdn-url.com/uploads/<uploaded-image-file-name-given-by-strapi.jpg>`. This will save in your database properly for use in the API, and these URLs will begin to be used inside the Strapi admin to serve the image previews!
+
 ### Provider Configuration
 
 `./config/plugins.js`
@@ -38,7 +40,7 @@ module.exports = ({ env }) => ({
   // ...
   upload: {
     config: {
-      provider: 'aws-s3',
+      provider: 'strapi-provider-upload-aws-s3-use-cdn',
       providerOptions: {
         accessKeyId: env('AWS_ACCESS_KEY_ID'),
         secretAccessKey: env('AWS_ACCESS_SECRET'),
@@ -46,6 +48,8 @@ module.exports = ({ env }) => ({
         params: {
           Bucket: env('AWS_BUCKET'),
         },
+        cdnDomain: env('AWS_CDN_DOMAIN'),
+        bucketSubDirectory: env('AWS_BUCKET_SUBDIRECTORY')
       },
       actionOptions: {
         upload: {},
@@ -53,7 +57,7 @@ module.exports = ({ env }) => ({
         delete: {},
       },
     },
-  },
+  }
   // ...
 });
 ```
