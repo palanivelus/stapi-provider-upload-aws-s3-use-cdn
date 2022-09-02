@@ -1,6 +1,6 @@
 {
   "name": "strapi-provider-upload-aws-s3-use-cdn",
-  "version": "1.0.1.1",
+  "version": "1.0.2",
   "description": "Expands on the standard @strapi AWS S3 provider package to enable uploading to private S3 buckets by removing the public ACL requirement and allowing settings to be configured for S3 subdirectories. It also allows a CDN base URL to be set since the public S3 image URLs will be disabled.",
   "keywords": [
     "upload",
