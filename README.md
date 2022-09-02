@@ -1,4 +1,4 @@
-# @strapi/provider-upload-aws-s3
+# strapi-provider-upload-aws-s3-use-cdn
 
 ## Resources
 
