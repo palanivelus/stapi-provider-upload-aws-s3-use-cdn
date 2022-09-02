@@ -68,17 +68,24 @@ module.exports = ({ env }) => ({
   // ...
   upload: {
     config: {
-      provider: 'aws-s3',
+      provider: 'aws-s3-use-cdn',
       providerOptions: {
-        accessKeyId: env('SCALEWAY_ACCESS_KEY_ID'),
-        secretAccessKey: env('SCALEWAY_ACCESS_SECRET'),
-        endpoint: env('SCALEWAY_ENDPOINT'), // e.g. "s3.fr-par.scw.cloud"
+        accessKeyId: env('AWS_ACCESS_KEY_ID'),
+        secretAccessKey: env('AWS_ACCESS_SECRET'),
+        region: env('AWS_REGION'),
         params: {
-          Bucket: env('SCALEWAY_BUCKET'),
+          Bucket: env('AWS_BUCKET'),
         },
       },
+      actionOptions: {
+        upload: {},
+        uploadStream: {},
+        delete: {},
+      },
+      cdnDomain: env('AWS_CDN_DOMAIN'),
+      bucketSubDirectory: env('AWS_BUCKET_SUBDIRECTORY')
     },
-  },
+  }
   // ...
 });
 ```
