@@ -15,7 +15,7 @@
 
 ```bash
 # using yarn
-yarn add strapi-provider-upload-aws-s3-use-cdnv
+yarn add strapi-provider-upload-aws-s3-use-cdn
 
 # using npm
 npm install strapi-provider-upload-aws-s3-use-cdn
